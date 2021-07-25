@@ -1,3 +1,5 @@
+@import '../abstract/mixins';
+
 *,
 *::after,
 *::before{
@@ -8,9 +10,25 @@
 
 
 html{
-    font-size: 62.5%;
+    font-size: 62.5%; // 100% is 16px , 62.5% is 10px => so each 1 rem = 10px;
+
+    @include respond(teb-land){
+        font-size: 56.5%;
+    }
+    @include respond(teb-port){
+        font-size: 50%;
+    }
+    @include respond(phone){
+        font-size: 40%;
+    }
 }
 body{
     box-sizing: border-box; // to excelude margin and padding from elements width
     font-family: bebas-neue, sans-serif;
+}
+
+
+// remove purple color after clicking a link
+::selection{
+    background-color: rgba($color-primary , .3);
 }

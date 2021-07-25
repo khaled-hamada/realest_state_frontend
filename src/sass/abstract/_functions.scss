@@ -1,0 +1,7 @@
+@function calWidth($f, $s) { // f first number, s => second number
+  $result: calc( (#{$f} * (( 100% - (#{$s} - 1) * #{$gutter-horizontal} ) / #{$s} ) ) + ( (#{$f} - 1 ) * #{$gutter-horizontal} ));
+  
+  @return $result;
+}
+
+

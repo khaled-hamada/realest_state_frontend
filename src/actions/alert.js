@@ -9,11 +9,11 @@ export const setAlert = (msg , alertType , timeout=5000) =>(dispatch, getState) 
          * aync. logic here , like fetch or send data to a backend api / db .... 
          */
     // then resume dispatch again 
-    
+
     dispatch({
         type : SET_ALERT,
         payload:{msg , alertType , id}
     });
-    // romve alert after this amount of time which is in this case 5 sec.
+    // romve alert after this amount of time which is in this case 5 sec. ===>> (async.)
     setTimeout(() => dispatch( {type:REMOVE_ALERT, payload:id} ) , timeout);
 }

@@ -19,9 +19,9 @@ export const login = (email, password) => async (dispatch) =>{
     };
 
     const body = JSON.stringify({email, password});
-
+   console.log(body); 
     try{
-        const response = await axios.post(`${process.env.REACT_APP_API}/api/token/`,
+        const response = await axios.post(`http://127.0.0.1:8000/api/token/`,
             body, config)
 
         // call dispatch to fire login success action
@@ -40,7 +40,7 @@ export const login = (email, password) => async (dispatch) =>{
         })
 
         //alert user 
-        dispatch(setAlert("Cannot Authenticate User", "Error"));
+        dispatch(setAlert("Cannot Authenticate User", "error"));
     }
     
 }
@@ -53,27 +53,28 @@ export const signup = (email,username, password, password2) => async (dispatch) 
         }
     };
 
-    const body = JSON.stringify({email,username, password,password2});
+    const body = JSON.stringify(email,username, password,password2);
 
     try{
-        const response = await axios.post(`${process.env.REACT_APP_API}/api/accounts/signup`,
+        const response = await axios.post(`http://127.0.0.1:8000/api/accounts/signup/`,
             body, config)
 
         // call dispatch to fire signup success action 
         dispatch({
             type:SIGNUP_SUCCESS,
-            payload:response.data // data here is the jwt access token
+            payload:response.data 
         }) 
         // call it again to log user in 
         dispatch(login(email, password))
 
     }catch(error){
+         console.log(error)
          dispatch({
             type:SIGNUP_FAILED,
         })
 
         //alert user 
-        dispatch(setAlert("Error Creating New User", "Error"));
+        dispatch(setAlert("Error Creating New User", "error"));
     }
     
 }

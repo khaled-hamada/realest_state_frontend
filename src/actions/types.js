@@ -3,5 +3,5 @@ export const REMOVE_ALERT= 'REMOVE_ALERT';
 export const SIGNUP_SUCCESS= 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILED= 'SIGNUP_FAILED';
 export const LOGIN_SUCCESS= 'LOGIN_SUCCESS';
-export const LOGIN_FAILED= 'LOGNI_FAILED';
+export const LOGIN_FAILED= 'LOGIN_FAILED';
 export const LOGOUT='LOGOUT';

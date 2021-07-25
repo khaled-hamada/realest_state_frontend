@@ -1,38 +1,37 @@
 import {
-    SIGNUP_SUCCESS , 
+    SIGNUP_SUCCESS,
     SIGNUP_FAILED,
-    LOGOUT , 
     LOGIN_SUCCESS,
-    LOGIN_FAILED
-} from '../actions/types'
+    LOGIN_FAILED,
+    LOGOUT
+} from '../actions/types';
 
-
-const initialState={
-    token : localStorage.getItem('token'),
-    isAuthenticated : false ,
-    loading : false
+// let token = localStorage.getItem('token');
+// let isAuth = token? true:false;
+const initialState = {
+    token: localStorage.getItem('token'),
+    isAuthenticated:  false,
+    loading: false
 };
 
+const auth = (state = initialState, action) =>{
+    const { type, payload } = action;
 
-const auth = (state = initialState , action)=>{
-    const{type, payload} = action;
-
-    switch (type){
+    switch(type) {
         case LOGIN_SUCCESS:
-            localStorage.setItem('token', payload.token);
-            return{
+            localStorage.setItem('token', payload.access);
+            return {
                 ...state,
-                isAuthenticated:true,
+                isAuthenticated: true,
                 loading: false,
-                token:payload.token
+                token: payload.access
             }
         case SIGNUP_SUCCESS:
-            return{
+            return {
                 ...state,
-                isAuthenticated:false,
-                loading:false,
+                isAuthenticated: false,
+                loading: true
             }
-
         case SIGNUP_FAILED:
         case LOGIN_FAILED:
         case LOGOUT:
@@ -44,11 +43,7 @@ const auth = (state = initialState , action)=>{
                 loading: false
             }
         default:
-            return state;
+            return state
     }
-
-
 }
-
-
 export default auth;

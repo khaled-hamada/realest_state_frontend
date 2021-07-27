@@ -167,9 +167,7 @@ const ListingDetail = (props) => {
             <div className='row'>
                 <p className='listingdetail__description'>{listing.description}</p>
             </div>
-            <div className="row">
-                {`number of images fetched ${displayInteriorImages().length}`}
-            </div>
+           
            
             {displayInteriorImages()}
 
